@@ -13,7 +13,7 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "2021.0.1")
+    set('springCloudVersion', "2021.0.3")
 }
 
 dependencyManagement {
@@ -26,6 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka'
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
