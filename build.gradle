@@ -1,35 +1,51 @@
-plugins {
-    id 'org.springframework.boot' version '2.7.3'
-    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-    id 'java'
-}
+buildscript {
+    ext {
+        springBootVersion = '2.7.3'
+        dependencyManagementVersion = '1.0.13.RELEASE'
+        springCloudVersion = '2021.0.3'
+    }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+    repositories {
+        mavenCentral()
+    }
 
-repositories {
-    mavenCentral()
-}
-
-ext {
-    set('springCloudVersion', "2021.0.3")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    dependencies {
+        dependencies {
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+            classpath "io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}"
+        }
     }
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka'
-    implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
+    group = 'com.example'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
 
-tasks.named('test') {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }
