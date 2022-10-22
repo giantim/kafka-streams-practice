@@ -1,2 +1,3 @@
 rootProject.name = 'kafka-streams-practice'
 include('kafka-producer')
+include('kafka-streams')
