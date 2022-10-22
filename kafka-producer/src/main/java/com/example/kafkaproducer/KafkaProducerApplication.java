@@ -1,12 +1,12 @@
-package com.example.kafkastreamspractice;
+package com.example.kafkaproducer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KafkaStreamsPracticeApplication {
+public class KafkaProducerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KafkaStreamsPracticeApplication.class, args);
+        SpringApplication.run(KafkaProducerApplication.class, args);
     }
 }

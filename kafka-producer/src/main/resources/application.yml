@@ -1,0 +1,11 @@
+spring:
+  kafka:
+    # https://docs.spring.io/spring-cloud-stream-binder-kafka/docs/3.2.1/reference/html/spring-cloud-stream-binder-kafka.html#_setting_up_bootstrap_server_configuration
+    bootstrap-servers: http://localhost:9092
+    producer:
+      acks: 1
+      batch-size: 1000000
+      key-serializer: org.springframework.kafka.support.serializer.StringOrBytesSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        linger.ms: 100
